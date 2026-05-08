@@ -1,0 +1,2517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guia completo sobre o Programa de Educação Tutorial (PET) — MEC/SESu. Filosofia, governança, atribuições, bolsas, avaliação e o comparativo entre o Manual de 2006 e a Portaria 976/2010.">
+<meta name="author" content="Prof. Dr. Leonardo Vils">
+<meta property="og:title" content="PET — Tudo o que Você Precisa Saber">
+<meta property="og:description" content="Guia completo sobre o Programa de Educação Tutorial brasileiro.">
+<title>PET — Tudo o que Você Precisa Saber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===========================
+     DESIGN TOKENS
+  =========================== */
+  :root {
+    --bg: #faf6ec;
+    --bg-elevated: #fffaf0;
+    --bg-sunken: #f1ead8;
+    --ink: #1a1814;
+    --ink-soft: #4a3f2e;
+    --ink-muted: #7a6c54;
+    --rule: #d8cda8;
+    --rule-soft: #e8dfc4;
+    --gold: #9c7a2e;
+    --gold-bright: #c9a961;
+    --gold-soft: #e6d8a8;
+    --burgundy: #6b1f1f;
+    --burgundy-soft: #f4dede;
+    --navy: #1c2e4a;
+    --petadi-blue: #1e3a6f;
+    --petadi-red: #dc2626;
+    --leaf: #4a6741;
+    --shadow-sm: 0 1px 2px rgba(26, 24, 20, 0.06);
+    --shadow-md: 0 4px 12px rgba(26, 24, 20, 0.08), 0 1px 3px rgba(26, 24, 20, 0.05);
+    --shadow-lg: 0 12px 32px rgba(26, 24, 20, 0.12);
+    --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
+    --font-body: 'Lora', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --radius: 4px;
+    --radius-lg: 8px;
+    --content-max: 760px;
+    --sidebar-w: 300px;
+  }
+
+  [data-theme="dark"] {
+    --bg: #14110b;
+    --bg-elevated: #1c1812;
+    --bg-sunken: #0f0d09;
+    --ink: #f0e8d4;
+    --ink-soft: #c8bfa8;
+    --ink-muted: #8a8068;
+    --rule: #3a3326;
+    --rule-soft: #2a2418;
+    --gold: #d4af5e;
+    --gold-bright: #e6c879;
+    --gold-soft: #4a3a18;
+    --burgundy: #d97070;
+    --burgundy-soft: #3a1818;
+    --navy: #6090c8;
+    --petadi-blue: #6090c8;
+    --petadi-red: #e07070;
+    --leaf: #8db080;
+  }
+
+  /* ===========================
+     RESET & BASE
+  =========================== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(156, 122, 46, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107, 31, 31, 0.03) 0%, transparent 50%);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Subtle paper grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.5 0 0 0 0 0.3 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+  [data-theme="dark"] body::before { mix-blend-mode: screen; opacity: 0.15; }
+
+  ::selection { background: var(--gold-soft); color: var(--ink); }
+
+  /* ===========================
+     TOP BAR
+  =========================== */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .topbar-inner {
+    max-width: 1400px; margin: 0 auto;
+    padding: 14px 28px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+  .brand-logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+  .brand-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--rule);
+    flex-shrink: 0;
+  }
+  .brand-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .brand-text .ornament { color: var(--gold); margin: 0 5px; }
+  .topbar-search {
+    flex: 1; max-width: 360px;
+    position: relative;
+  }
+  .topbar-search input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--bg-sunken);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    outline: none;
+    transition: all 0.2s;
+  }
+  .topbar-search input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-soft);
+    background: var(--bg-elevated);
+  }
+  .topbar-search::before {
+    content: '⚲';
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--ink-muted);
+    font-size: 16px;
+  }
+  .topbar-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .icon-btn {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+  .icon-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-soft);
+  }
+
+  /* ===========================
+     LAYOUT
+  =========================== */
+  .layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===========================
+     TABLE OF CONTENTS
+  =========================== */
+  .toc {
+    position: sticky; top: 65px;
+    align-self: start;
+    height: calc(100vh - 65px);
+    overflow-y: auto;
+    padding: 32px 24px 32px 28px;
+    border-right: 1px solid var(--rule);
+    font-size: 14px;
+  }
+  .toc-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+  .toc li { counter-increment: toc; margin: 2px 0; }
+  .toc a {
+    display: block;
+    padding: 6px 8px 6px 28px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-radius: var(--radius);
+    position: relative;
+    line-height: 1.4;
+    transition: all 0.15s;
+  }
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .toc a:hover { background: var(--bg-sunken); color: var(--ink); }
+  .toc a.active {
+    color: var(--burgundy);
+    background: var(--burgundy-soft);
+    font-weight: 500;
+  }
+  .toc a.active::before { color: var(--burgundy); opacity: 1; }
+
+  /* ===========================
+     MAIN CONTENT
+  =========================== */
+  .content {
+    padding: 60px 60px 120px 60px;
+    max-width: calc(var(--content-max) + 120px);
+  }
+
+  /* ===========================
+     HERO
+  =========================== */
+  .hero {
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 80px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: '◆ ';
+    color: var(--gold);
+    margin-right: 4px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px 0;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--burgundy);
+  }
+  .hero-lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 640px;
+    font-style: italic;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 24px;
+    margin-top: 40px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+  .hero-meta span strong {
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  /* ===========================
+     SECTIONS
+  =========================== */
+  section { margin-bottom: 80px; scroll-margin-top: 90px; }
+
+  .section-header {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    position: relative;
+  }
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .section-header::after {
+    content: '';
+    display: block;
+    margin-top: 24px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--rule) 0%, var(--rule) 60%, transparent 100%);
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    margin: 40px 0 16px 0;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  h3::before {
+    content: '§ ';
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  h4 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 17px;
+    margin: 24px 0 8px 0;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 16px 0; }
+  p + p { text-indent: 0; }
+
+  a:not(.toc a):not(.icon-btn) {
+    color: var(--burgundy);
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: all 0.15s;
+  }
+  a:not(.toc a):not(.icon-btn):hover {
+    color: var(--gold);
+    text-decoration-color: var(--burgundy);
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+  em { font-style: italic; }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 4.2em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 10px -4px 0;
+    color: var(--gold);
+  }
+
+  /* ===========================
+     LISTS
+  =========================== */
+  ul, ol { padding-left: 24px; margin: 0 0 20px 0; }
+  ul li, ol li { margin: 8px 0; }
+  ul li::marker { color: var(--gold); }
+  ol li::marker { color: var(--gold); font-family: var(--font-mono); font-size: 0.9em; }
+
+  /* ===========================
+     COMPONENTS
+  =========================== */
+
+  /* Quick fact cards grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .stat-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--gold);
+    padding: 20px;
+    border-radius: var(--radius);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .stat-value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--burgundy);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+  .stat-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+
+  /* Pull quote / Decree quote */
+  .decree {
+    margin: 32px 0;
+    padding: 24px 28px;
+    background: var(--bg-elevated);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .decree::before {
+    content: '“';
+    position: absolute;
+    top: -8px; left: 12px;
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .decree cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+  }
+  .decree cite::before { content: '— '; color: var(--gold); }
+
+  /* Callouts */
+  .callout {
+    margin: 24px 0;
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    border-left: 3px solid;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .callout-info {
+    background: rgba(28, 46, 74, 0.05);
+    border-color: var(--navy);
+  }
+  .callout-warn {
+    background: rgba(107, 31, 31, 0.06);
+    border-color: var(--burgundy);
+  }
+  .callout-note {
+    background: rgba(156, 122, 46, 0.08);
+    border-color: var(--gold);
+  }
+  .callout-title {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .callout-info .callout-title { color: var(--navy); }
+  .callout-warn .callout-title { color: var(--burgundy); }
+  .callout-note .callout-title { color: var(--gold); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* Governance cards */
+  .gov-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+  .gov-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    border-radius: var(--radius);
+    position: relative;
+  }
+  .gov-card::before {
+    content: attr(data-numeral);
+    position: absolute;
+    top: 16px; right: 18px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .gov-card h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    color: var(--ink);
+    padding-right: 32px;
+  }
+  .gov-card .gov-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+    padding: 2px 8px;
+    background: var(--bg-sunken);
+    border-radius: 12px;
+  }
+  .gov-card p { font-size: 14px; line-height: 1.55; margin: 0 0 8px 0; color: var(--ink-soft); }
+  .gov-card ul { padding-left: 18px; font-size: 14px; }
+  .gov-card ul li { margin: 4px 0; color: var(--ink-soft); }
+
+  /* Comparative table */
+  .compare-wrap {
+    margin: 28px 0;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-elevated);
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  .compare-table thead {
+    background: var(--bg-sunken);
+  }
+  .compare-table th {
+    text-align: left;
+    padding: 14px 16px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--gold);
+  }
+  .compare-table th:first-child { width: 28%; }
+  .compare-table td {
+    padding: 14px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule-soft);
+    line-height: 1.55;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover { background: var(--bg-sunken); }
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .compare-table .changed {
+    background: linear-gradient(to bottom, transparent 0%, transparent 60%, var(--gold-soft) 60%, var(--gold-soft) 95%, transparent 95%);
+    padding: 0 2px;
+  }
+
+  /* Org chart */
+  .orgchart {
+    margin: 32px 0;
+    padding: 28px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .org-tier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .org-tier:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -16px; left: 50%;
+    width: 1px; height: 16px;
+    background: var(--gold);
+  }
+  .org-node {
+    background: var(--bg);
+    border: 1px solid var(--gold);
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    text-align: center;
+    min-width: 200px;
+  }
+  .org-node strong {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--ink);
+    display: block;
+  }
+  .org-node small {
+    font-size: 12px;
+    color: var(--ink-muted);
+    display: block;
+    margin-top: 2px;
+  }
+  .org-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .org-row .org-node { min-width: 150px; padding: 10px 14px; }
+
+  /* FAQ accordion */
+  .faq { margin: 28px 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--rule);
+  }
+  .faq-item:first-child { border-top: 1px solid var(--rule); }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 18px 32px 18px 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .faq-q::after {
+    content: '+';
+    position: absolute;
+    right: 4px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--gold);
+    transition: transform 0.2s;
+  }
+  .faq-q:hover { color: var(--burgundy); }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+  }
+  .faq-item.open .faq-a {
+    max-height: 800px;
+    padding: 0 0 20px 0;
+  }
+  .faq-a p:last-child { margin-bottom: 0; }
+
+  /* Glossary */
+  .glossary { margin: 24px 0; }
+  .glossary dt {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--burgundy);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+  .glossary dt:first-child { margin-top: 0; }
+  .glossary dd {
+    margin: 4px 0 0 0;
+    padding-left: 16px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--rule);
+  }
+
+  /* Mini badges for actors */
+  .actor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .actor {
+    padding: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font-size: 14px;
+  }
+  .actor h5 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0 0 6px 0;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .actor p { margin: 0; color: var(--ink-soft); line-height: 1.5; font-size: 13.5px; }
+
+  /* Source / footer */
+  .sources {
+    margin-top: 60px;
+    padding: 32px;
+    background: var(--bg-sunken);
+    border-radius: var(--radius);
+    border: 1px solid var(--rule);
+  }
+  .sources h3 { margin-top: 0; }
+  .sources p { font-size: 14.5px; margin-bottom: 10px; }
+  .sources cite { font-style: italic; color: var(--ink-muted); }
+
+  footer.page-foot {
+    text-align: center;
+    padding: 60px 28px 40px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    margin-top: 60px;
+  }
+  footer.page-foot .ornament {
+    color: var(--gold);
+    font-size: 16px;
+    margin: 0 8px;
+    font-family: var(--font-display);
+  }
+  .footer-logo {
+    width: 110px; height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    opacity: 0.85;
+  }
+
+  /* Mobile menu button (hidden on desktop) */
+  .menu-toggle { display: none; }
+
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc {
+      position: fixed;
+      top: 65px; left: 0;
+      width: 280px;
+      height: calc(100vh - 65px);
+      background: var(--bg);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 50;
+      box-shadow: var(--shadow-lg);
+    }
+    .toc.open { transform: translateX(0); }
+    .content { padding: 40px 24px 80px 24px; }
+    .menu-toggle { display: flex; }
+    .topbar-search { max-width: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .topbar-inner { padding: 12px 16px; gap: 10px; }
+    .brand-logo { height: 30px; }
+    .brand-divider, .brand-text { display: none; }
+    .topbar-search { display: none; }
+    .topbar-search.mobile-shown { display: block; position: absolute; top: 60px; left: 0; right: 0; padding: 12px 16px; background: var(--bg-elevated); border-bottom: 1px solid var(--rule); }
+    .content { padding: 28px 16px 60px 16px; }
+    .hero h1 { font-size: 36px; }
+    .hero-lead { font-size: 17px; }
+    .section-header h2 { font-size: 26px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-value { font-size: 22px; }
+    .gov-grid { grid-template-columns: 1fr; }
+    .compare-table { font-size: 13.5px; }
+    .compare-table th, .compare-table td { padding: 10px 12px; }
+    .compare-table th:first-child { width: 35%; }
+  }
+
+  /* ===========================
+     GLOSSARY TOOLTIPS
+  =========================== */
+  .term {
+    border-bottom: 1px dotted var(--gold);
+    cursor: help;
+    position: relative;
+    outline: none;
+  }
+  .term:hover, .term:focus {
+    color: var(--burgundy);
+    border-bottom-color: var(--burgundy);
+  }
+  .term:hover::after, .term:focus::after {
+    content: attr(data-def);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+    width: max-content;
+    max-width: 280px;
+    z-index: 200;
+    box-shadow: var(--shadow-lg);
+    pointer-events: none;
+    animation: tooltipIn 0.18s 0.25s both;
+  }
+  .term:hover::before, .term:focus::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--ink);
+    z-index: 200;
+    pointer-events: none;
+    animation: tooltipIn 0.18s 0.25s both;
+  }
+  @keyframes tooltipIn {
+    from { opacity: 0; transform: translate(-50%, 4px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+  /* Edge-aware positioning for terms near right edge */
+  .term:nth-last-child(-n+2):hover::after,
+  .term:nth-last-child(-n+2):focus::after {
+    left: auto; right: 0;
+    transform: none;
+  }
+
+  /* ===========================
+     QUIZ
+  =========================== */
+  .quiz-card {
+    margin: 28px 0 0;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--burgundy);
+    border-radius: var(--radius);
+    padding: 36px 36px 32px;
+    box-shadow: var(--shadow-sm);
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+  }
+  .quiz-screen { display: none; flex: 1; flex-direction: column; }
+  .quiz-screen.active { display: flex; animation: quizFade 0.3s ease; }
+  @keyframes quizFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .quiz-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+  .quiz-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .quiz-intro p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 20px; }
+  .quiz-intro ul { font-size: 14px; color: var(--ink-soft); margin-bottom: 24px; }
+
+  .quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+  }
+  .quiz-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--rule-soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold), var(--burgundy));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0;
+  }
+
+  .quiz-q {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 24px;
+    color: var(--ink);
+  }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+  .quiz-opt {
+    text-align: left;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .quiz-opt:hover {
+    border-color: var(--gold);
+    background: var(--bg-sunken);
+    transform: translateX(2px);
+  }
+  .quiz-opt:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .quiz-btn {
+    align-self: flex-start;
+    background: var(--burgundy);
+    color: var(--bg-elevated);
+    border: none;
+    padding: 12px 28px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quiz-btn:hover {
+    background: var(--ink);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  .quiz-btn-secondary {
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+  }
+  .quiz-btn-secondary:hover {
+    background: var(--bg-sunken);
+    color: var(--ink);
+    border-color: var(--ink-muted);
+  }
+
+  /* Result tiers */
+  .quiz-result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .quiz-result-badge::before { content: '◆'; font-size: 9px; }
+  .tier-great { background: rgba(74, 103, 65, 0.12); color: var(--leaf); }
+  .tier-good { background: var(--gold-soft); color: var(--gold); }
+  .tier-reflect { background: var(--burgundy-soft); color: var(--burgundy); }
+  .tier-blocker { background: var(--burgundy); color: var(--bg-elevated); }
+
+  .quiz-result h3 { margin-top: 0; }
+  .quiz-result h3::before { content: ''; }
+  .quiz-summary {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .quiz-feedback {
+    background: var(--bg-sunken);
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 20px 0 24px;
+  }
+  .quiz-feedback strong {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .quiz-feedback ul { margin: 0; padding-left: 20px; }
+  .quiz-feedback li { margin: 6px 0; font-size: 14.5px; color: var(--ink-soft); }
+  .quiz-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+
+  @media (max-width: 640px) {
+    .quiz-card { padding: 24px 20px; }
+    .quiz-title, .quiz-q { font-size: 19px; }
+    .quiz-result-badge { font-size: 10px; }
+  }
+
+  section.hidden-by-search { display: none; }
+  mark.search-hit {
+    background: var(--gold-soft);
+    color: var(--ink);
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
+  /* ===========================
+     PRINT
+  =========================== */
+  @media print {
+    body { background: white; color: black; font-size: 11pt; }
+    body::before { display: none; }
+    .topbar, .toc, footer.page-foot, .menu-toggle, .topbar-actions, .topbar-search { display: none; }
+    .layout { display: block; max-width: none; }
+    .content { padding: 0; max-width: none; }
+    section { page-break-inside: avoid; margin-bottom: 30px; }
+    .hero { page-break-after: always; }
+    h2, h3, h4 { color: black; page-break-after: avoid; }
+    .stat-card, .gov-card, .actor, .callout, .decree, .compare-wrap, .orgchart, .sources {
+      box-shadow: none; border: 1px solid #ccc; background: white !important;
+    }
+    a { color: black; text-decoration: none; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<!-- =========================== TOP BAR =========================== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    <div class="brand">
+      <!-- ============================================================
+           LOGO PETADI — recriado como SVG inline.
+           Para substituir pelo arquivo original, troque este <svg> por:
+           <img src="logo_petadi.png" alt="PETADI UNINOVE" class="brand-logo">
+           ============================================================ -->
+      <svg class="brand-logo" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PETADI UNINOVE">
+        <!-- Ícones do tripé acadêmico -->
+        <g stroke="var(--petadi-blue)" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Livro (ensino) -->
+          <g fill="none" stroke-width="14">
+            <path d="M 60 80 Q 60 60 90 55 Q 130 50 160 75 L 160 175 Q 130 155 90 160 Q 60 165 60 185 Z"/>
+            <path d="M 260 80 Q 260 60 230 55 Q 190 50 160 75 L 160 175 Q 190 155 230 160 Q 260 165 260 185 Z"/>
+          </g>
+          <!-- Microscópio (pesquisa) -->
+          <g transform="translate(300,0)">
+            <rect x="-12" y="55" width="28" height="36" rx="4" fill="var(--petadi-blue)" stroke="none"/>
+            <line x1="2" y1="91" x2="10" y2="118" stroke-width="13" fill="none"/>
+            <path d="M -28 118 L 32 118 L 38 145 L -22 152 Z" fill="var(--petadi-blue)" stroke="none"/>
+            <rect x="-38" y="160" width="80" height="14" rx="2" fill="var(--petadi-blue)" stroke="none"/>
+            <line x1="2" y1="174" x2="2" y2="190" stroke-width="13" fill="none"/>
+            <ellipse cx="2" cy="195" rx="48" ry="9" fill="var(--petadi-blue)" stroke="none"/>
+          </g>
+          <!-- Mãos em círculo (extensão) -->
+          <g transform="translate(490,128)">
+            <circle cx="0" cy="0" r="72" fill="none" stroke-width="11"/>
+            <circle cx="0" cy="-72" r="13" fill="var(--petadi-blue)" stroke="none"/>
+            <circle cx="-62" cy="36" r="13" fill="var(--petadi-blue)" stroke="none"/>
+            <circle cx="62" cy="36" r="13" fill="var(--petadi-blue)" stroke="none"/>
+            <path d="M -38 -8 Q -28 -22 -10 -16 Q 0 -12 -4 -2 Q -2 4 -10 -2 Q -22 -2 -32 6 Q -42 8 -38 -8 Z" fill="var(--petadi-blue)" stroke="none"/>
+            <path d="M 38 -8 Q 28 -22 10 -16 Q 0 -12 4 -2 Q 2 4 10 -2 Q 22 -2 32 6 Q 42 8 38 -8 Z" fill="var(--petadi-blue)" stroke="none"/>
+          </g>
+        </g>
+        <!-- PETADI -->
+        <text x="300" y="345" text-anchor="middle"
+              font-family="'Arial Black','Helvetica Neue',Impact,sans-serif"
+              font-size="135" font-weight="900" font-style="italic"
+              fill="var(--petadi-blue)" letter-spacing="-3">PETADI</text>
+        <!-- UNINOVE -->
+        <text x="300" y="412" text-anchor="middle"
+              font-family="'Arial Black','Helvetica Neue',Impact,sans-serif"
+              font-size="58" font-weight="800" font-style="italic"
+              fill="var(--petadi-blue)" letter-spacing="6">UNINOVE</text>
+        <!-- Cinco pontos vermelhos -->
+        <g fill="var(--petadi-red)">
+          <ellipse cx="200" cy="465" rx="15" ry="11"/>
+          <ellipse cx="250" cy="465" rx="15" ry="11"/>
+          <ellipse cx="300" cy="465" rx="15" ry="11"/>
+          <ellipse cx="350" cy="465" rx="15" ry="11"/>
+          <ellipse cx="400" cy="465" rx="15" ry="11"/>
+        </g>
+      </svg>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-text">PET <span class="ornament">◆</span> Guia Completo</span>
+    </div>
+    <div class="topbar-search" id="searchWrap">
+      <input type="search" id="search" placeholder="Buscar no documento..." aria-label="Buscar">
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="searchToggleMobile" aria-label="Buscar" title="Buscar">⚲</button>
+      <button class="icon-btn" id="themeToggle" aria-label="Alternar tema" title="Alternar tema escuro">◐</button>
+      <button class="icon-btn" id="printBtn" aria-label="Imprimir" title="Imprimir / salvar como PDF">⎙</button>
+    </div>
+  </div>
+</header>
+
+<!-- =========================== LAYOUT =========================== -->
+<div class="layout">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc" id="toc" aria-label="Sumário">
+    <div class="toc-title">Sumário</div>
+    <ol>
+      <li><a href="#apresentacao">Apresentação</a></li>
+      <li><a href="#essencia">A essência do PET</a></li>
+      <li><a href="#historia">Trajetória histórica</a></li>
+      <li><a href="#marcos-legais">Marcos legais</a></li>
+      <li><a href="#filosofia">Filosofia &amp; objetivos</a></li>
+      <li><a href="#governanca">Estrutura de governança</a></li>
+      <li><a href="#atores">Atores &amp; atribuições</a></li>
+      <li><a href="#ingresso">Como ingressar</a></li>
+      <li><a href="#quiz">Você se encaixa? — Quiz</a></li>
+      <li><a href="#operacao">Operação do grupo</a></li>
+      <li><a href="#bolsas">Bolsas &amp; custeio</a></li>
+      <li><a href="#avaliacao">Avaliação do programa</a></li>
+      <li><a href="#desligamento">Desligamentos</a></li>
+      <li><a href="#comparativo">Manual 2006 × Portaria 2010</a></li>
+      <li><a href="#faq">Perguntas frequentes</a></li>
+      <li><a href="#glossario">Glossário</a></li>
+      <li><a href="#fontes">Fontes &amp; referências</a></li>
+    </ol>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- ============= HERO ============= -->
+    <section id="apresentacao" class="hero">
+      <div class="hero-eyebrow">Guia de Referência</div>
+      <h1>Programa de<br>Educação Tutorial<br><em>tudo o que você precisa saber</em></h1>
+      <p class="hero-lead">
+        Um guia consolidado da filosofia, governança, atribuições, bolsas e avaliação do PET — articulando o
+        Manual de Orientações Básicas (SESu/MEC, 2006) e a Portaria MEC nº 976/2010 num único documento navegável.
+      </p>
+      <div class="hero-meta">
+        <span><strong>Base legal</strong> Lei 11.180/2005</span>
+        <span><strong>Norma vigente</strong> Portaria MEC 976/2010</span>
+        <span><strong>Gestor</strong> SESu/MEC</span>
+        <span><strong>Versão</strong> consolidada</span>
+      </div>
+    </section>
+
+    <!-- ============= ESSÊNCIA ============= -->
+    <section id="essencia">
+      <div class="section-header">
+        <div class="section-number">§ 01 — Conceito</div>
+        <h2>A essência do PET em três ideias</h2>
+      </div>
+      <p class="dropcap">
+        O Programa de Educação Tutorial é, antes de tudo, uma resposta institucional a uma constatação simples: o
+        currículo formal de graduação, por mais bem desenhado que seja, deixa lacunas. O PET preenche essas lacunas
+        através de grupos de aprendizagem coletiva, conduzidos por um professor tutor, que articulam ensino, pesquisa
+        e extensão de forma indissociável.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">1979</div>
+          <div class="stat-label">Ano de criação</div>
+          <div class="stat-note">Originalmente "Programa Especial de Treinamento", criado pela CAPES.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">2004</div>
+          <div class="stat-label">Renomeação</div>
+          <div class="stat-note">Passa a se chamar "Programa de Educação Tutorial".</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Pilares indissociáveis</div>
+          <div class="stat-note">Ensino, pesquisa e extensão articulados em cada atividade.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">4 a 12</div>
+          <div class="stat-label">Tamanho do grupo</div>
+          <div class="stat-note">Mínimo de 4 bolsistas para funcionar; máximo de 12 quando integralizado.</div>
+        </div>
+      </div>
+
+      <div class="decree">
+        O método tutorial permite o desenvolvimento de habilidades de resolução de problemas e pensamento crítico,
+        em contraste com o ensino centrado na memorização passiva, e oportuniza aos estudantes tornarem-se
+        independentes na administração de suas necessidades de aprendizagem.
+        <cite>Manual de Orientações Básicas, Cap. I, §1.1</cite>
+      </div>
+    </section>
+
+    <!-- ============= HISTÓRIA ============= -->
+    <section id="historia">
+      <div class="section-header">
+        <div class="section-number">§ 02 — Trajetória</div>
+        <h2>De CAPES/PET 1979 ao desenho atual</h2>
+      </div>
+
+      <p>O PET tem mais de quatro décadas de história institucional, com três marcos importantes:</p>
+
+      <h3>1979 — Nascimento na CAPES</h3>
+      <p>
+        Criado como <strong>Programa Especial de Treinamento</strong> pela Coordenação de Aperfeiçoamento de Pessoal
+        de Nível Superior (CAPES), respondendo à necessidade de formar quadros de excelência para a pós-graduação
+        brasileira em expansão.
+      </p>
+
+      <h3>1999 — Migração para a SESu/MEC</h3>
+      <p>
+        O programa é transferido para a Secretaria de Educação Superior do Ministério da Educação, ficando sob
+        responsabilidade do Departamento de Modernização e Programas da Educação Superior (DEPEM).
+      </p>
+
+      <h3>2004 — Educação Tutorial</h3>
+      <p>
+        Mudança de identidade conceitual: passa a se chamar <strong>Programa de Educação Tutorial</strong>,
+        deslocando o foco do "treinamento" para a formação ampla via método tutorial.
+      </p>
+
+      <h3>2005–2010 — Consolidação normativa</h3>
+      <p>
+        A Lei nº 11.180/2005 dá ao programa base legal estável. As Portarias 3.385/2005 e 1.632/2006 estruturam o
+        funcionamento. O Manual de Orientações Básicas (dezembro de 2006) operacionaliza tudo isso. Em 2010, a
+        Portaria 976 (que consolida a 591/2009 com alterações da 975/2010) atualiza o arcabouço — e é a norma
+        que prevalece hoje.
+      </p>
+    </section>
+
+    <!-- ============= MARCOS LEGAIS ============= -->
+    <section id="marcos-legais">
+      <div class="section-header">
+        <div class="section-number">§ 03 — Base normativa</div>
+        <h2>Marcos legais que sustentam o PET</h2>
+      </div>
+
+      <p>
+        O PET se apoia numa cadeia normativa em três níveis: lei federal, portarias ministeriais e o manual
+        operacional. Em caso de conflito, prevalece o instrumento mais recente e de maior hierarquia.
+      </p>
+
+      <div class="gov-grid">
+        <div class="gov-card" data-numeral="I">
+          <h4>Lei nº 11.180/2005</h4>
+          <span class="gov-tag">Base legal</span>
+          <p>Cria o instituto jurídico do PET. É a norma de maior hierarquia e dá ao programa estabilidade institucional.</p>
+        </div>
+        <div class="gov-card" data-numeral="II">
+          <h4>Portaria MEC 976/2010</h4>
+          <span class="gov-tag">Norma vigente</span>
+          <p>Consolidação da Portaria 591/2009 com alterações da 975/2010. Define hoje a governança, valores de bolsa, atribuições e processo avaliativo.</p>
+        </div>
+        <div class="gov-card" data-numeral="III">
+          <h4>Manual SESu/MEC (2006)</h4>
+          <span class="gov-tag">Operacional / filosófico</span>
+          <p>Orienta a execução cotidiana. Excelente referência conceitual, embora vários dispositivos tenham sido atualizados pela Portaria 976/2010.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-warn">
+        <div class="callout-title">Atenção à hierarquia</div>
+        <p>
+          Quando o Manual de 2006 e a Portaria de 2010 divergem (composição de comitês, carga horária do tutor,
+          critério de rendimento do bolsista, valores de bolsa, prazo máximo de tutoria), <strong>vale a Portaria</strong>.
+          Veja a tabela comparativa na seção 13.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= FILOSOFIA ============= -->
+    <section id="filosofia">
+      <div class="section-header">
+        <div class="section-number">§ 04 — Concepção</div>
+        <h2>Filosofia &amp; objetivos do programa</h2>
+      </div>
+
+      <h3>Concepção filosófica</h3>
+      <p>
+        O PET parte da hipótese de que o ensino centrado em transmissão passiva de conteúdo — o modelo dominante
+        na graduação brasileira — é insuficiente para formar profissionais críticos e socialmente engajados. A
+        resposta é um modelo tutorial: pequenos grupos, sob orientação direta de um professor experiente, que
+        aprendem fazendo, refletindo e dialogando.
+      </p>
+
+      <p>
+        Três princípios estruturam essa concepção:
+      </p>
+      <ul>
+        <li><strong>Indissociabilidade ensino-pesquisa-extensão.</strong> Cada atividade deve articular as três dimensões; nenhuma pode ser cultivada isoladamente.</li>
+        <li><strong>Atuação coletiva e interdisciplinar.</strong> O grupo trabalha junto; o tutor não substitui o coletivo, e a interdisciplinaridade evita especialização precoce.</li>
+        <li><strong>Compromisso social.</strong> A formação acadêmica é meio para uma atuação cidadã que contribua com a transformação da realidade nacional.</li>
+      </ul>
+
+      <h3>Objetivo geral</h3>
+      <p>
+        Promover a formação ampla e de qualidade acadêmica dos alunos de graduação envolvidos, direta ou
+        indiretamente, com o programa, estimulando a fixação de valores que reforcem a cidadania e a consciência
+        social, e contribuindo para a melhoria dos cursos de graduação.
+      </p>
+
+      <h3>Objetivos específicos</h3>
+      <ul>
+        <li>Formular novas estratégias de desenvolvimento e modernização do ensino superior no país.</li>
+        <li>Desenvolver práticas e experiências pedagógicas inovadoras no âmbito do curso.</li>
+        <li>Integrar ensino, pesquisa e extensão de modo articulado.</li>
+        <li>Formar bolsistas como agentes multiplicadores junto ao conjunto dos alunos do curso.</li>
+        <li>Estimular a interação dos bolsistas com pós-graduação e com a realidade social local.</li>
+        <li>Oferecer formação acadêmica de excelência, voltada à cidadania e à função social da educação superior.</li>
+        <li>Privilegiar o "aprender fazendo e refletindo sobre".</li>
+      </ul>
+    </section>
+
+    <!-- ============= GOVERNANÇA ============= -->
+    <section id="governanca">
+      <div class="section-header">
+        <div class="section-number">§ 05 — Governança</div>
+        <h2>Estrutura de governança do PET</h2>
+      </div>
+
+      <p>
+        O PET se organiza administrativamente em <strong>três instâncias nacionais</strong> mais o nível institucional
+        local. A Portaria 976/2010 atualizou a composição de cada uma.
+      </p>
+
+      <div class="orgchart" aria-label="Organograma do PET">
+        <div class="org-tier">
+          <div class="org-node">
+            <strong>SESu / MEC</strong>
+            <small>Secretaria de Educação Superior — coordenação geral</small>
+          </div>
+        </div>
+        <div class="org-tier">
+          <div class="org-row">
+            <div class="org-node">
+              <strong>Conselho Superior</strong>
+              <small>Órgão normativo</small>
+            </div>
+            <div class="org-node">
+              <strong>Comissão de Avaliação</strong>
+              <small>16 consultores externos</small>
+            </div>
+          </div>
+        </div>
+        <div class="org-tier">
+          <div class="org-node">
+            <strong>Comitês Locais de Acompanhamento (CLA)</strong>
+            <small>Em cada IES — articulação local</small>
+          </div>
+        </div>
+        <div class="org-tier">
+          <div class="org-node">
+            <strong>Grupos PET</strong>
+            <small>Tutor + bolsistas + não-bolsistas</small>
+          </div>
+        </div>
+      </div>
+
+      <h3>Conselho Superior</h3>
+      <p>Presidido pelo Secretário de Educação Superior, é o órgão normativo. A composição atualizada (Portaria 976/2010) inclui:</p>
+      <ul>
+        <li>Secretário de Educação Superior (presidente)</li>
+        <li>Secretário da SECAD (Educação Continuada, Alfabetização e Diversidade)</li>
+        <li>Diretor da DIFES (Desenvolvimento da Rede IFES)</li>
+        <li>Coordenador do PET na SESu</li>
+        <li>Coordenador de Programas da SECAD</li>
+        <li>Representantes da Comissão de Avaliação, da CAPES e do FNDE</li>
+        <li>Representantes dos bolsistas, dos tutores, dos pró-reitores de graduação <em>e de extensão</em></li>
+      </ul>
+
+      <h3>Comissão de Avaliação</h3>
+      <p>
+        Responsável pela avaliação técnica do programa. Composta pelo Diretor da DIFES, pelo Coordenador do PET na
+        SESu (que a preside), pelo Coordenador de Programas da SECAD e por <strong>16 consultores externos</strong>
+        nomeados pelo Secretário de Educação Superior, representando as oito grandes áreas do conhecimento
+        articuladas com áreas temáticas (Comunicação, Cultura, Direitos Humanos e Justiça, Educação, Meio Ambiente,
+        Saúde, Tecnologia e Inovação, Produção e Trabalho).
+      </p>
+
+      <h3>Comitês Locais de Acompanhamento (CLA)</h3>
+      <p>
+        Designados pelas pró-reitorias de graduação e extensão da IES. Compostos por tutores, coordenadores de cursos
+        de graduação, coordenadores de programas/projetos institucionais de extensão e estudantes bolsistas.
+      </p>
+
+      <div class="callout callout-info">
+        <div class="callout-title">Mudança crítica em 2010</div>
+        <p>
+          Na Portaria 976/2010, <strong>tutores ou bolsistas do PET na IES podem representar no máximo 1/3 da
+          totalidade dos membros do CLA</strong>. No Manual de 2006 a regra era oposta — 2/3 indicados pelos integrantes
+          do programa. Esse rebalanceamento aumentou a autonomia institucional do CLA frente aos próprios grupos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= ATORES ============= -->
+    <section id="atores">
+      <div class="section-header">
+        <div class="section-number">§ 06 — Atores</div>
+        <h2>Quem faz o quê no PET</h2>
+      </div>
+
+      <p>
+        Cada nível da estrutura tem atribuições específicas. O sucesso do programa depende dessa articulação.
+      </p>
+
+      <div class="actor-grid">
+        <div class="actor">
+          <h5>SESu / MEC</h5>
+          <p>Define políticas e diretrizes, lança editais, implanta e extingue grupos, garante a infraestrutura do
+          Conselho Superior e da Comissão de Avaliação.</p>
+        </div>
+        <div class="actor">
+          <h5>IES / Pró-Reitoria</h5>
+          <p>Gerencia os grupos implantados, designa interlocutor, constitui o CLA, encaminha planos e relatórios à
+          SESu, dá publicidade ao processo seletivo.</p>
+        </div>
+        <div class="actor">
+          <h5>Curso de Graduação</h5>
+          <p>Colabora no planejamento, estimula a interação crítica do grupo com o projeto pedagógico,
+          acompanha a avaliação.</p>
+        </div>
+        <div class="actor">
+          <h5>Tutor</h5>
+          <p>Planeja e supervisiona atividades, coordena seleção, dedica carga horária mínima, atende prazos da IES e
+          do MEC, presta contas dos recursos de custeio.</p>
+        </div>
+        <div class="actor">
+          <h5>Aluno bolsista</h5>
+          <p>Dedica 20h semanais ao programa, mantém bom rendimento, participa de todas as atividades, publica ou
+          apresenta um trabalho científico por ano.</p>
+        </div>
+        <div class="actor">
+          <h5>Aluno não-bolsista</h5>
+          <p>Mesmos requisitos e deveres do bolsista. Faz jus a certificado idêntico após dois anos de participação
+          comprovada. Tem prioridade na substituição de bolsistas.</p>
+        </div>
+      </div>
+
+      <h3>Atribuições do tutor (essenciais)</h3>
+      <ol>
+        <li>Planejar e supervisionar todas as atividades do grupo (bolsistas e não-bolsistas).</li>
+        <li>Coordenar a seleção de bolsistas e não-bolsistas.</li>
+        <li>Submeter a proposta de trabalho às pró-reitorias de graduação e de extensão para aprovação.</li>
+        <li>Organizar dados para o relatório da IES e para a avaliação dos consultores.</li>
+        <li>Dedicar carga horária mínima de <strong>10 horas semanais</strong> à orientação dos bolsistas (Portaria 976/2010).</li>
+        <li>Atender, nos prazos estipulados, às demandas da IES e do MEC.</li>
+        <li>Controlar frequência e participação dos bolsistas.</li>
+        <li>Elaborar a prestação de contas dos recursos recebidos.</li>
+        <li>Fazer referência à condição de tutor PET nas publicações e trabalhos apresentados.</li>
+        <li>Cumprir as exigências do Termo de Compromisso.</li>
+      </ol>
+
+      <h3>Deveres do bolsista</h3>
+      <ol>
+        <li>Zelar pela qualidade acadêmica do PET.</li>
+        <li>Participar de todas as atividades programadas pelo tutor.</li>
+        <li>Participar de atividades de ensino, pesquisa e extensão durante a permanência no PET.</li>
+        <li>Manter bom rendimento no curso de graduação.</li>
+        <li>Contribuir com a formação de colegas, especialmente no ano de ingresso.</li>
+        <li><strong>Publicar ou apresentar pelo menos um trabalho acadêmico por ano</strong>, individualmente ou em grupo.</li>
+        <li>Fazer referência à condição de bolsista PET nas publicações.</li>
+        <li>Cumprir o Termo de Compromisso.</li>
+      </ol>
+    </section>
+
+    <!-- ============= INGRESSO ============= -->
+    <section id="ingresso">
+      <div class="section-header">
+        <div class="section-number">§ 07 — Ingresso</div>
+        <h2>Como ingressar no programa</h2>
+      </div>
+
+      <p>O ingresso tem requisitos diferentes em quatro níveis:</p>
+
+      <h3>Da Instituição (IES)</h3>
+      <ul>
+        <li>Promover a institucionalização do programa conforme a Lei 11.180/2005.</li>
+        <li>Oferecer condições de implantação, gerenciamento, acompanhamento e avaliação.</li>
+        <li>Manter um interlocutor do programa junto à SESu/MEC.</li>
+        <li>Comunicar ao departamento do tutor a atribuição oficial de carga horária para tutoria.</li>
+        <li>Criar e manter o Comitê Local de Acompanhamento.</li>
+      </ul>
+
+      <h3>Do Curso de Graduação</h3>
+      <ul>
+        <li>Oferecer condições para o desenvolvimento das atividades.</li>
+        <li>Possuir alunado em condições de candidatar-se à seleção.</li>
+        <li>Interagir com o grupo PET, somando esforços para que as ações repercutam positivamente no curso.</li>
+        <li>Participar do planejamento, respeitando a autonomia do grupo.</li>
+      </ul>
+
+      <h3>Do Tutor</h3>
+      <ul>
+        <li>Pertencer ao quadro permanente da instituição, em regime de tempo integral e dedicação exclusiva.</li>
+        <li>Ter título de doutor (excepcionalmente, mestre — com bolsa reduzida).</li>
+        <li>Não acumular qualquer outro tipo de bolsa.</li>
+        <li>Comprovar atuação efetiva em cursos e atividades de graduação nos três anos anteriores.</li>
+        <li>Comprovar atividades de pesquisa e extensão nos três anos anteriores (via Currículo Lattes).</li>
+        <li>Comprometer-se com 10 horas semanais mínimas dedicadas ao grupo.</li>
+        <li>Assinar o Termo de Compromisso.</li>
+      </ul>
+
+      <h3>Do aluno candidato</h3>
+      <ul>
+        <li>Estar regularmente matriculado em curso de graduação.</li>
+        <li>Não ser bolsista de qualquer outro programa.</li>
+        <li>Apresentar bom rendimento acadêmico (parâmetros fixados pelo colegiado da IES).</li>
+        <li>Ter disponibilidade para 20 horas semanais.</li>
+        <li>Assinar o Termo de Compromisso.</li>
+      </ul>
+
+      <div class="callout callout-note">
+        <div class="callout-title">Edital de seleção</div>
+        <p>
+          Tanto para tutores quanto para alunos, o edital deve ser divulgado oficialmente, no âmbito do curso, com
+          <strong>antecedência mínima de oito dias</strong>, incluindo data, local, horário, critérios e procedimentos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= QUIZ ============= -->
+    <section id="quiz">
+      <div class="section-header">
+        <div class="section-number">§ 08 — Autoavaliação</div>
+        <h2>Você se encaixa no perfil PET?</h2>
+      </div>
+
+      <p>
+        Sete perguntas curtas para você ter um diagnóstico honesto antes de se inscrever no edital.
+        Não há resposta "certa" universal — o que existe é o perfil que o programa exige por norma e o que ele
+        espera na prática. Responda pensando na sua situação atual.
+      </p>
+
+      <div class="quiz-card" id="quizApp">
+        <!-- INTRO -->
+        <div class="quiz-screen quiz-intro active" data-screen="intro">
+          <div class="quiz-eyebrow">◆ Diagnóstico rápido</div>
+          <h3 class="quiz-title">Avalie seu encaixe no perfil PET em 2 minutos</h3>
+          <p>
+            O quiz cobre os principais requisitos formais (matrícula, acúmulo de bolsa, disponibilidade) e os
+            traços de perfil esperados (predisposição a publicar, atuar nos três pilares, trabalhar em grupo).
+          </p>
+          <ul>
+            <li>7 perguntas, uma por tela</li>
+            <li>Sem cadastro nem coleta de dados</li>
+            <li>Diagnóstico personalizado ao final</li>
+          </ul>
+          <button class="quiz-btn" id="quizStart" type="button">Começar →</button>
+        </div>
+
+        <!-- QUESTION -->
+        <div class="quiz-screen quiz-question" data-screen="question">
+          <div class="quiz-progress">
+            <span id="qProgressText">Pergunta 1 de 7</span>
+            <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qProgressFill"></div></div>
+          </div>
+          <h3 class="quiz-q" id="qText">—</h3>
+          <div class="quiz-options" id="qOptions"></div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="quiz-screen quiz-result" data-screen="result">
+          <div class="quiz-result-badge" id="qBadge"></div>
+          <h3 id="qResultTitle">—</h3>
+          <p class="quiz-summary" id="qResultSummary"></p>
+          <div class="quiz-feedback" id="qFeedback" hidden>
+            <strong>Pontos para considerar</strong>
+            <ul id="qFeedbackList"></ul>
+          </div>
+          <div class="quiz-actions">
+            <button class="quiz-btn" id="quizRestart" type="button">↺ Refazer</button>
+            <a class="quiz-btn quiz-btn-secondary" href="#ingresso" style="text-decoration: none;">Rever requisitos →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= OPERAÇÃO ============= -->
+    <section id="operacao">
+      <div class="section-header">
+        <div class="section-number">§ 09 — Operação</div>
+        <h2>Operação cotidiana do grupo</h2>
+      </div>
+
+      <h3>Composição e integralização</h3>
+      <p>
+        O grupo PET inicia com <strong>4 bolsistas</strong> (mínimo absoluto para funcionamento). A integralização
+        ocorre progressivamente, com expansões anuais de quatro bolsistas, até o limite máximo de
+        <strong>12 bolsistas</strong>. Cada expansão depende de justificativa do tutor ao CLA e de avaliação positiva
+        do grupo. A composição deve incluir alunos de diferentes semestres da graduação.
+      </p>
+
+      <p>
+        Adicionalmente, o grupo pode ter <strong>até metade do número de bolsistas como alunos não-bolsistas</strong>
+        (ex.: grupo com 12 bolsistas pode ter até 6 não-bolsistas). Não-bolsistas têm os mesmos deveres e direitos —
+        inclusive o certificado após dois anos.
+      </p>
+
+      <h3>Planejamento e execução das atividades</h3>
+      <p>
+        Cada grupo elabora anualmente seu <strong>Plano de Atividades</strong> e o envia à pró-reitoria de graduação.
+        O CLA analisa, emite parecer e pode solicitar ajustes. Após aprovação local, o plano segue à SESu/MEC.
+      </p>
+
+      <p>O plano deve garantir equilíbrio entre:</p>
+      <ul>
+        <li>Atividades de ensino, pesquisa e extensão (todas as três, sem concentração em uma só).</li>
+        <li>Participação individual e coletiva dos membros.</li>
+        <li>Contato com a comunidade acadêmica e com a comunidade externa à IES.</li>
+        <li>Programa diversificado, além do que já está na grade curricular.</li>
+      </ul>
+    </section>
+
+    <!-- ============= BOLSAS ============= -->
+    <section id="bolsas">
+      <div class="section-header">
+        <div class="section-number">§ 10 — Recursos</div>
+        <h2>Bolsas, custeio &amp; recursos financeiros</h2>
+      </div>
+
+      <p>
+        Os valores das bolsas são fixados em portarias do MEC e foram reajustados após a Portaria 976/2010.
+        Os montantes a seguir são os <strong>valores vigentes</strong> — sempre confirmar no edital ou portaria
+        de reajuste mais recente.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">R$ 3.100</div>
+          <div class="stat-label">Bolsa do tutor doutor</div>
+          <div class="stat-note">Valor mensal vigente para tutor com título de doutor.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">R$ 2.100</div>
+          <div class="stat-label">Tutor mestre (excepcional)</div>
+          <div class="stat-note">Quando a bolsa é concedida a tutor com titulação de mestre.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">R$ 700</div>
+          <div class="stat-label">Bolsa do estudante</div>
+          <div class="stat-note">Valor mensal vigente do bolsista de graduação.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3 + 3 anos</div>
+          <div class="stat-label">Duração da bolsa de tutoria</div>
+          <div class="stat-note">Renovável por igual período conforme parecer da Comissão de Avaliação.</div>
+        </div>
+      </div>
+
+      <h3>Custeio das atividades</h3>
+      <p>
+        Além das bolsas, cada grupo PET recebe um valor de custeio para suas atividades. O cálculo é direto:
+        <strong>valor da bolsa do estudante × número de bolsistas do grupo</strong>. Esse montante é repassado ao
+        tutor para aplicação integral nas atividades do grupo. Por conveniência operacional, o pagamento pode
+        ocorrer em parcela única anual.
+      </p>
+
+      <p>
+        Material didático adquirido com recursos de custeio deve ser <strong>doado à IES</strong> ao final das
+        atividades do grupo. Os repasses de custeio são feitos diretamente ao tutor pela CAPES.
+      </p>
+
+      <h3>Pagamento das bolsas</h3>
+      <p>
+        As bolsas de tutores e estudantes são pagas pelo <strong>Fundo Nacional de Educação (FNDE)</strong>,
+        mediante repasse de recursos pela SESu/SECAD.
+      </p>
+
+      <div class="callout callout-warn">
+        <div class="callout-title">Vedação de acumulação</div>
+        <p>
+          Tanto tutor quanto bolsista <strong>não podem acumular qualquer outro tipo de bolsa</strong>. A
+          dedicação ao PET é incompatível com bolsas concorrentes (iniciação científica, extensão, monitoria etc.).
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= AVALIAÇÃO ============= -->
+    <section id="avaliacao">
+      <div class="section-header">
+        <div class="section-number">§ 11 — Avaliação</div>
+        <h2>Avaliação do programa, dos grupos e dos tutores</h2>
+      </div>
+
+      <h3>Filosofia da avaliação</h3>
+      <p>
+        A avaliação no PET é entendida como <strong>processo pedagógico</strong>: visa o desenvolvimento da crítica,
+        da autocrítica e do autoconhecimento. Suas características essenciais:
+      </p>
+      <ul>
+        <li><strong>Institucional</strong> — envolve todas as instâncias da IES, não apenas o grupo.</li>
+        <li><strong>Global</strong> — articula as diferentes atividades em torno do plano do grupo.</li>
+        <li><strong>Construtiva, não punitiva</strong> — busca diagnóstico, mas não significa manutenção incondicional dos grupos.</li>
+        <li><strong>Compromisso coletivo</strong> — todos os agentes corresponsáveis pelo desempenho.</li>
+        <li><strong>Contínua</strong> — interação permanente entre grupo, CLA e SESu/MEC.</li>
+      </ul>
+
+      <h3>Indicadores de avaliação dos grupos</h3>
+      <p>A avaliação dos grupos PET se baseia em (Art. 25 da Portaria 976/2010):</p>
+      <ol>
+        <li>Relatório anual do grupo.</li>
+        <li>Sucesso acadêmico do grupo.</li>
+        <li>Participação dos estudantes em atividades, projetos e programas de ensino, pesquisa e extensão no âmbito do PET.</li>
+        <li>Desenvolvimento de inovação e práticas educativas no curso.</li>
+        <li>Alinhamento das atividades com o Projeto Pedagógico Institucional e com políticas para redução da evasão.</li>
+        <li>Publicações e participação em eventos acadêmicos de tutores e bolsistas.</li>
+        <li>Relatórios de auto-avaliação de estudantes e tutores.</li>
+        <li>Visitas locais, quando identificada a necessidade.</li>
+      </ol>
+
+      <h3>Indicadores de avaliação do tutor</h3>
+      <p>A avaliação do tutor considera (Art. 26):</p>
+      <ul>
+        <li>Cumprimento das atividades inerentes ao PET.</li>
+        <li>Contribuição para a inovação e desenvolvimento da graduação.</li>
+        <li>Publicações e produção científica.</li>
+        <li>Disciplinas ministradas na graduação.</li>
+        <li>Orientação de trabalhos acadêmicos.</li>
+        <li>Participação em projetos ou programas de extensão.</li>
+        <li>Participação em conselhos acadêmicos.</li>
+        <li>Material didático produzido e publicado a partir das atividades do grupo.</li>
+        <li>Relação entre ações planejadas e efetivamente executadas.</li>
+        <li>Relatório anual da IES e relatório dos estudantes do grupo.</li>
+        <li>Sucesso acadêmico do grupo PET.</li>
+      </ul>
+
+      <div class="callout callout-info">
+        <div class="callout-title">Consequência da avaliação</div>
+        <p>
+          O grupo PET pode ser <strong>extinto em decorrência dos resultados da avaliação</strong>. Quando isso
+          ocorre, a IES não tem direito automático à reposição: cabe ao Secretário de Educação Superior decidir
+          sobre a criação de novo grupo e a realocação dos recursos financeiros.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= DESLIGAMENTO ============= -->
+    <section id="desligamento">
+      <div class="section-header">
+        <div class="section-number">§ 12 — Desligamentos</div>
+        <h2>Critérios de desligamento</h2>
+      </div>
+
+      <h3>Desligamento do tutor</h3>
+      <p>O tutor será desligado nas seguintes situações:</p>
+      <ul>
+        <li>Decisão do CLA.</li>
+        <li>Avaliação insatisfatória pelo CLA ou pela Comissão de Avaliação.</li>
+        <li>Descumprimento do Termo de Compromisso ou da Portaria 976/2010.</li>
+        <li><strong>Após o exercício da função de tutor por seis anos consecutivos</strong> — limite temporal introduzido pela Portaria 2010.</li>
+      </ul>
+
+      <h3>Desligamento do bolsista</h3>
+      <p>O bolsista será desligado quando ocorrer:</p>
+      <ul>
+        <li>Conclusão, trancamento de matrícula ou abandono do curso de graduação.</li>
+        <li>Desistência.</li>
+        <li>Rendimento escolar insuficiente.</li>
+        <li>Acúmulo de duas reprovações em disciplinas após o ingresso no PET.</li>
+        <li>Descumprimento das obrigações junto às pró-reitorias.</li>
+        <li>Descumprimento dos deveres do Art. 18 da Portaria.</li>
+        <li>Prática ou envolvimento em ações não condizentes com os objetivos do PET ou com o ambiente universitário.</li>
+      </ul>
+    </section>
+
+    <!-- ============= COMPARATIVO ============= -->
+    <section id="comparativo">
+      <div class="section-header">
+        <div class="section-number">§ 13 — O que mudou</div>
+        <h2>Manual 2006 × Portaria MEC 976/2010</h2>
+      </div>
+
+      <p>
+        Este é o ponto que mais gera confusão na operação cotidiana: o Manual de 2006 ainda circula como referência,
+        mas em vários pontos foi superado. Em caso de divergência, prevalece a Portaria.
+      </p>
+
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Manual 2006</th>
+              <th>Portaria 976/2010</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Conselho Superior</td>
+              <td>Composição mais enxuta (foco SESu + áreas tradicionais).</td>
+              <td><span class="changed">Inclui SECAD, DIFES, CAPES, FNDE e pró-reitores de extensão.</span></td>
+            </tr>
+            <tr>
+              <td>Comissão de Avaliação</td>
+              <td>8 consultores externos.</td>
+              <td><span class="changed">16 consultores externos</span>, articulados com áreas temáticas (Comunicação, Cultura, Direitos Humanos etc.).</td>
+            </tr>
+            <tr>
+              <td>Carga horária mínima do tutor</td>
+              <td>8 horas semanais.</td>
+              <td><span class="changed">10 horas semanais.</span></td>
+            </tr>
+            <tr>
+              <td>Composição do CLA</td>
+              <td>2/3 dos membros indicados pelos integrantes do programa na IES.</td>
+              <td><span class="changed">Tutores ou bolsistas: máximo 1/3 do total</span> — inversão da regra.</td>
+            </tr>
+            <tr>
+              <td>Critério de rendimento do bolsista</td>
+              <td>Coeficiente de Rendimento ≥ 6,0 (regra federal fixa).</td>
+              <td><span class="changed">"Bom rendimento"</span> conforme parâmetros do colegiado máximo da IES.</td>
+            </tr>
+            <tr>
+              <td>Valor das bolsas (texto original)</td>
+              <td>Não especificado em valores nominais.</td>
+              <td><span class="changed">R$ 1.800 (tutor doutor) / R$ 1.200 (mestre) / R$ 360 (bolsista)</span> — valores reajustados depois para R$ 3.100 / R$ 2.100 / R$ 700.</td>
+            </tr>
+            <tr>
+              <td>Limite temporal de tutoria</td>
+              <td>Não há prazo máximo explícito.</td>
+              <td><span class="changed">Desligamento automático após 6 anos consecutivos.</span></td>
+            </tr>
+            <tr>
+              <td>Ênfase em extensão</td>
+              <td>Reconhecida, mas com governança centrada em graduação.</td>
+              <td><span class="changed">Pró-reitorias de extensão integradas à governança</span> (CLA, Conselho Superior).</td>
+            </tr>
+            <tr>
+              <td>Avaliação</td>
+              <td>Bienal, focada em rendimento e relatório.</td>
+              <td>Inclui <span class="changed">alinhamento ao PPI, redução de evasão e inovação educativa</span>.</td>
+            </tr>
+            <tr>
+              <td>Tutor mestre</td>
+              <td>Excepcional, sem distinção de bolsa.</td>
+              <td>Excepcional, com <span class="changed">bolsa de valor reduzido</span> (R$ 1.200 originais; R$ 2.100 atualizado).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-note">
+        <div class="callout-title">Como tratar os dois documentos</div>
+        <p>
+          Use o <strong>Manual de 2006</strong> como referência conceitual e filosófica — ele é mais didático e
+          explica o "espírito" do programa. Use a <strong>Portaria 976/2010</strong> como referência normativa para
+          governança, valores, prazos e composição de comitês. Em conflito, sempre prevalece a Portaria.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= FAQ ============= -->
+    <section id="faq">
+      <div class="section-header">
+        <div class="section-number">§ 14 — Dúvidas comuns</div>
+        <h2>Perguntas frequentes</h2>
+      </div>
+
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" type="button">Posso ser tutor PET sem ser doutor?</button>
+          <div class="faq-a"><p>Apenas em caráter <strong>excepcional</strong>. A regra é doutorado, com tempo integral e dedicação exclusiva. Quando a bolsa é concedida a tutor com titulação de mestre, o valor é reduzido (atualmente <strong>R$ 2.100 para mestre</strong> versus <strong>R$ 3.100 para doutor</strong>).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Posso acumular bolsa do PET com outra bolsa?</button>
+          <div class="faq-a"><p>Não. Tanto para tutor quanto para bolsista, a vedação é explícita: <strong>não acumular qualquer outro tipo de bolsa</strong>. Isso inclui iniciação científica, monitoria, extensão e similares.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Quanto valem as bolsas do PET hoje?</button>
+          <div class="faq-a"><p>Os valores vigentes são: <strong>R$ 3.100 mensais para tutor doutor</strong>, <strong>R$ 2.100 para tutor mestre</strong> (caso excepcional) e <strong>R$ 700 para o estudante bolsista</strong>. Esses valores foram reajustados após a Portaria 976/2010, que originalmente fixou R$ 1.800, R$ 1.200 e R$ 360. Como podem ser atualizados por novas portarias, sempre vale conferir o edital ou portaria vigente. O custeio do grupo é calculado pela fórmula <strong>bolsa do estudante × número de bolsistas</strong>, repassado ao tutor para aplicação nas atividades.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Por quanto tempo um tutor pode permanecer no programa?</button>
+          <div class="faq-a"><p>A bolsa de tutoria tem duração de três anos, renovável por igual período mediante parecer favorável da Comissão de Avaliação — totalizando até <strong>seis anos consecutivos</strong>. Após esse período, o desligamento é automático (Art. 15 da Portaria 976/2010).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Aluno não-bolsista tem os mesmos direitos do bolsista?</button>
+          <div class="faq-a"><p>Os mesmos <strong>deveres e requisitos</strong> de ingresso e permanência. Recebe certificado idêntico ao bolsista após dois anos de participação efetiva e comprovada (com indicação da condição de não-bolsista). Tem prioridade na substituição de bolsistas. Não recebe a bolsa mensal.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Quantos bolsistas um grupo PET pode ter?</button>
+          <div class="faq-a"><p>O grupo inicia com <strong>4 bolsistas</strong> e pode crescer até o limite de <strong>12 bolsistas</strong>. As expansões ocorrem em etapas anuais de quatro bolsistas, mediante justificativa do tutor ao CLA e avaliação positiva. Adicionalmente, é permitida a presença de não-bolsistas em até metade do número de bolsistas.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">O bolsista PET é obrigado a publicar?</button>
+          <div class="faq-a"><p>Sim. Cada bolsista deve <strong>publicar ou apresentar pelo menos um trabalho acadêmico por ano</strong>, individualmente ou em grupo, em evento de natureza científica. Além disso, deve fazer referência à condição de bolsista PET nas publicações.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">O que acontece se o grupo for mal avaliado?</button>
+          <div class="faq-a"><p>O grupo pode ser <strong>extinto</strong>. Quando isso ocorre, a IES não tem direito automático à reposição — a criação de novo grupo cabe ao Secretário de Educação Superior, com realocação dos recursos. Por isso a avaliação é institucional, não apenas do tutor.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Quem indica os representantes no Comitê Local?</button>
+          <div class="faq-a"><p>O CLA é designado pelas pró-reitorias de graduação e extensão. <strong>Tutores ou bolsistas do PET podem representar no máximo 1/3 da totalidade dos membros</strong> (regra da Portaria 976/2010 — diferente do Manual de 2006, que previa 2/3 indicados pelos integrantes).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">O Manual de 2006 ainda vale?</button>
+          <div class="faq-a"><p>Em parte. Ele continua sendo referência <strong>conceitual e filosófica</strong> excelente — explica bem o sentido do programa. Mas em pontos como composição do CLA, carga horária do tutor, valores de bolsa, critério de rendimento e prazo máximo de tutoria, <strong>foi superado pela Portaria 976/2010</strong>. Em conflito, prevalece a Portaria.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">O que é "indissociabilidade ensino-pesquisa-extensão" na prática?</button>
+          <div class="faq-a"><p>É o princípio de que essas três dimensões devem aparecer <strong>articuladas em cada atividade do grupo</strong>, não em projetos paralelos. Uma atividade típica de PET deve, idealmente, gerar produto pedagógico (ensino), produto investigativo (pesquisa) e devolutiva à comunidade (extensão) ao mesmo tempo. Concentrar-se exclusivamente em uma das vertentes é tratado como problema na avaliação.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= GLOSSÁRIO ============= -->
+    <section id="glossario">
+      <div class="section-header">
+        <div class="section-number">§ 15 — Vocabulário</div>
+        <h2>Glossário</h2>
+      </div>
+
+      <dl class="glossary">
+        <dt>SESu</dt>
+        <dd>Secretaria de Educação Superior do MEC. Responsável geral pela coordenação do PET.</dd>
+
+        <dt>SECAD</dt>
+        <dd>Secretaria de Educação Continuada, Alfabetização e Diversidade. Integra a governança do PET desde 2010.</dd>
+
+        <dt>DEPEM</dt>
+        <dd>Departamento de Modernização e Programas da Educação Superior, vinculado à SESu.</dd>
+
+        <dt>DIFES</dt>
+        <dd>Diretoria de Desenvolvimento da Rede IFES (Instituições Federais de Ensino Superior).</dd>
+
+        <dt>CLA</dt>
+        <dd>Comitê Local de Acompanhamento. Instância da IES responsável por acompanhar e orientar os grupos PET.</dd>
+
+        <dt>FNDE</dt>
+        <dd>Fundo Nacional de Desenvolvimento da Educação. Operacionaliza o pagamento das bolsas.</dd>
+
+        <dt>CAPES</dt>
+        <dd>Coordenação de Aperfeiçoamento de Pessoal de Nível Superior. Responsável pelo repasse do valor de custeio aos grupos.</dd>
+
+        <dt>IES</dt>
+        <dd>Instituição de Ensino Superior. Universidade ou faculdade onde o grupo PET está vinculado.</dd>
+
+        <dt>PPI</dt>
+        <dd>Projeto Pedagógico Institucional. Documento que orienta a IES como um todo; o grupo PET deve estar alinhado a ele.</dd>
+
+        <dt>Termo de Compromisso</dt>
+        <dd>Documento assinado por tutor e bolsistas, formalizando obrigações junto ao programa.</dd>
+
+        <dt>Tutor</dt>
+        <dd>Professor doutor (excepcionalmente mestre), em regime de TIDE, responsável pelo planejamento, supervisão e desempenho do grupo.</dd>
+
+        <dt>Bolsista</dt>
+        <dd>Aluno de graduação selecionado para o grupo, com bolsa mensal e dedicação de 20h semanais.</dd>
+
+        <dt>Não-bolsista</dt>
+        <dd>Aluno com mesmos deveres do bolsista, mas sem bolsa. Tem prioridade na substituição.</dd>
+      </dl>
+    </section>
+
+    <!-- ============= FONTES ============= -->
+    <section id="fontes">
+      <div class="section-header">
+        <div class="section-number">§ 16 — Fontes</div>
+        <h2>Fontes &amp; referências</h2>
+      </div>
+
+      <p>Este guia foi consolidado a partir das seguintes fontes oficiais:</p>
+
+      <div class="sources">
+        <h3>Documentos primários</h3>
+        <p>
+          <strong>BRASIL.</strong> Lei nº 11.180, de 23 de setembro de 2005.
+          <cite>Cria o instituto jurídico do Programa de Educação Tutorial.</cite>
+        </p>
+        <p>
+          <strong>BRASIL. Ministério da Educação.</strong> Portaria MEC nº 976, de 27 de julho de 2010.
+          <cite>Consolida a Portaria 591/2009 com as alterações da Portaria 975/2010. Norma vigente.</cite>
+        </p>
+        <p>
+          <strong>BRASIL. SESu/MEC.</strong> Manual de Orientações Básicas do Programa de Educação Tutorial. Brasília, dezembro de 2006.
+          <cite>Manual operacional e referência filosófica.</cite>
+        </p>
+        <p>
+          <strong>BRASIL. Ministério da Educação.</strong> Portarias MEC nº 3.385/2005 e 1.632/2006.
+          <cite>Estruturam o funcionamento do PET no período pré-2010.</cite>
+        </p>
+
+        <h3>Onde aprofundar</h3>
+        <p>
+          Para valores atualizados de bolsa, sempre consultar o edital vigente da SESu/MEC e a página oficial do
+          PET no portal do MEC. As Portarias podem ser acessadas no Diário Oficial da União.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="page-foot">
+  <svg class="footer-logo" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PETADI UNINOVE">
+    <g stroke="var(--petadi-blue)" stroke-linecap="round" stroke-linejoin="round">
+      <g fill="none" stroke-width="14">
+        <path d="M 60 80 Q 60 60 90 55 Q 130 50 160 75 L 160 175 Q 130 155 90 160 Q 60 165 60 185 Z"/>
+        <path d="M 260 80 Q 260 60 230 55 Q 190 50 160 75 L 160 175 Q 190 155 230 160 Q 260 165 260 185 Z"/>
+      </g>
+      <g transform="translate(300,0)">
+        <rect x="-12" y="55" width="28" height="36" rx="4" fill="var(--petadi-blue)" stroke="none"/>
+        <line x1="2" y1="91" x2="10" y2="118" stroke-width="13" fill="none"/>
+        <path d="M -28 118 L 32 118 L 38 145 L -22 152 Z" fill="var(--petadi-blue)" stroke="none"/>
+        <rect x="-38" y="160" width="80" height="14" rx="2" fill="var(--petadi-blue)" stroke="none"/>
+        <line x1="2" y1="174" x2="2" y2="190" stroke-width="13" fill="none"/>
+        <ellipse cx="2" cy="195" rx="48" ry="9" fill="var(--petadi-blue)" stroke="none"/>
+      </g>
+      <g transform="translate(490,128)">
+        <circle cx="0" cy="0" r="72" fill="none" stroke-width="11"/>
+        <circle cx="0" cy="-72" r="13" fill="var(--petadi-blue)" stroke="none"/>
+        <circle cx="-62" cy="36" r="13" fill="var(--petadi-blue)" stroke="none"/>
+        <circle cx="62" cy="36" r="13" fill="var(--petadi-blue)" stroke="none"/>
+        <path d="M -38 -8 Q -28 -22 -10 -16 Q 0 -12 -4 -2 Q -2 4 -10 -2 Q -22 -2 -32 6 Q -42 8 -38 -8 Z" fill="var(--petadi-blue)" stroke="none"/>
+        <path d="M 38 -8 Q 28 -22 10 -16 Q 0 -12 4 -2 Q 2 4 10 -2 Q 22 -2 32 6 Q 42 8 38 -8 Z" fill="var(--petadi-blue)" stroke="none"/>
+      </g>
+    </g>
+    <text x="300" y="345" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Impact,sans-serif" font-size="135" font-weight="900" font-style="italic" fill="var(--petadi-blue)" letter-spacing="-3">PETADI</text>
+    <text x="300" y="412" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Impact,sans-serif" font-size="58" font-weight="800" font-style="italic" fill="var(--petadi-blue)" letter-spacing="6">UNINOVE</text>
+    <g fill="var(--petadi-red)">
+      <ellipse cx="200" cy="465" rx="15" ry="11"/>
+      <ellipse cx="250" cy="465" rx="15" ry="11"/>
+      <ellipse cx="300" cy="465" rx="15" ry="11"/>
+      <ellipse cx="350" cy="465" rx="15" ry="11"/>
+      <ellipse cx="400" cy="465" rx="15" ry="11"/>
+    </g>
+  </svg>
+  <span class="ornament">◆</span>
+  Compilação editorial — guia de referência sobre o PET
+  <span class="ornament">◆</span>
+  <br>
+  Tipografia: Cinzel &amp; Lora · Conteúdo de domínio público (MEC/SESu)
+</footer>
+
+<!-- =========================== SCRIPTS =========================== -->
+<script>
+  // ============ THEME TOGGLE ============
+  const themeBtn = document.getElementById('themeToggle');
+  const body = document.body;
+  const stored = localStorage.getItem('pet-theme');
+  if (stored === 'dark') body.setAttribute('data-theme', 'dark');
+  themeBtn.addEventListener('click', () => {
+    const current = body.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    body.setAttribute('data-theme', next);
+    try { localStorage.setItem('pet-theme', next); } catch (e) {}
+  });
+
+  // ============ PRINT ============
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  // ============ MOBILE MENU ============
+  const toc = document.getElementById('toc');
+  const menuToggle = document.getElementById('menuToggle');
+  menuToggle.addEventListener('click', () => toc.classList.toggle('open'));
+  toc.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') toc.classList.remove('open');
+  });
+
+  // ============ MOBILE SEARCH TOGGLE ============
+  const searchWrap = document.getElementById('searchWrap');
+  const searchToggleMobile = document.getElementById('searchToggleMobile');
+  searchToggleMobile.addEventListener('click', () => {
+    searchWrap.classList.toggle('mobile-shown');
+    if (searchWrap.classList.contains('mobile-shown')) {
+      setTimeout(() => searchWrap.querySelector('input').focus(), 100);
+    }
+  });
+
+  // ============ SCROLL SPY ============
+  const sections = Array.from(document.querySelectorAll('main section'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const linkMap = new Map(tocLinks.map(a => [a.getAttribute('href').slice(1), a]));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = linkMap.get(id);
+        if (link) {
+          link.classList.add('active');
+          // Scroll TOC to keep active link visible
+          const tocBox = toc.getBoundingClientRect();
+          const linkBox = link.getBoundingClientRect();
+          if (linkBox.top < tocBox.top + 60 || linkBox.bottom > tocBox.bottom - 60) {
+            link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ============ FAQ ACCORDION ============
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      // Optionally close others — keeping multi-open for usability
+      item.classList.toggle('open');
+    });
+  });
+
+  // ============ SEARCH ============
+  const searchInput = document.getElementById('search');
+  let searchTimer;
+
+  function clearHighlights() {
+    document.querySelectorAll('mark.search-hit').forEach(m => {
+      const parent = m.parentNode;
+      parent.replaceChild(document.createTextNode(m.textContent), m);
+      parent.normalize();
+    });
+  }
+
+  function highlightInElement(el, term) {
+    if (!term) return 0;
+    const regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    let count = 0;
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => {
+        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement.closest('.toc, .topbar, script, style, mark')) return NodeFilter.FILTER_REJECT;
+        return regex.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const matches = [];
+    let node;
+    while (node = walker.nextNode()) matches.push(node);
+    matches.forEach(textNode => {
+      const span = document.createElement('span');
+      span.innerHTML = textNode.nodeValue.replace(regex, '<mark class="search-hit">$1</mark>');
+      textNode.parentNode.replaceChild(span, textNode);
+      while (span.firstChild) span.parentNode.insertBefore(span.firstChild, span);
+      span.parentNode.removeChild(span);
+      count++;
+    });
+    return count;
+  }
+
+  function runSearch(term) {
+    clearHighlights();
+    sections.forEach(s => s.classList.remove('hidden-by-search'));
+    if (!term || term.length < 2) return;
+
+    sections.forEach(section => {
+      const text = section.textContent.toLowerCase();
+      if (text.includes(term.toLowerCase())) {
+        highlightInElement(section, term);
+      } else {
+        section.classList.add('hidden-by-search');
+      }
+    });
+
+    // Scroll first hit into view
+    const firstHit = document.querySelector('mark.search-hit');
+    if (firstHit) firstHit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimer);
+    const term = e.target.value.trim();
+    searchTimer = setTimeout(() => runSearch(term), 200);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      e.target.value = '';
+      runSearch('');
+      e.target.blur();
+    }
+  });
+
+  // ============ GLOSSÁRIO TOOLTIP ============
+  // Define termos a partir do <dl class="glossary"> existente, mantendo single source of truth.
+  const GLOSSARY_OVERRIDES = {
+    'SESu/MEC': 'Secretaria de Educação Superior do Ministério da Educação.',
+    'IFES': 'Instituições Federais de Ensino Superior.',
+    'TIDE': 'Tempo Integral e Dedicação Exclusiva.',
+    'MEC': 'Ministério da Educação.'
+  };
+
+  function buildGlossary() {
+    const map = { ...GLOSSARY_OVERRIDES };
+    document.querySelectorAll('.glossary dt').forEach(dt => {
+      const term = dt.textContent.trim();
+      const dd = dt.nextElementSibling;
+      if (dd && dd.tagName === 'DD') {
+        map[term] = dd.textContent.trim();
+      }
+    });
+    return map;
+  }
+
+  function wrapGlossaryTerms() {
+    const glossary = buildGlossary();
+    const main = document.querySelector('main.content');
+    if (!main) return;
+    const skipSelector = '.section-header, .glossary, .topbar, .toc, .term, h1, h2, h3, h4, h5, .quiz-card, script, style, mark';
+
+    // Sort by length desc so longer terms (SESu/MEC) match before shorter (MEC)
+    const terms = Object.keys(glossary).sort((a, b) => b.length - a.length);
+    if (!terms.length) return;
+    const escaped = terms.map(t => t.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'));
+    const pattern = new RegExp('(?<![\\w/])(' + escaped.join('|') + ')(?![\\w/])', 'g');
+
+    const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => {
+        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement.closest(skipSelector)) return NodeFilter.FILTER_REJECT;
+        return pattern.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+
+    const targets = [];
+    let n;
+    while ((n = walker.nextNode())) targets.push(n);
+
+    targets.forEach(textNode => {
+      const text = textNode.nodeValue;
+      const fragment = document.createDocumentFragment();
+      let lastIdx = 0;
+      const localPattern = new RegExp(pattern.source, 'g');
+      let m;
+      while ((m = localPattern.exec(text)) !== null) {
+        if (m.index > lastIdx) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        }
+        const span = document.createElement('span');
+        span.className = 'term';
+        span.setAttribute('data-def', glossary[m[0]]);
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', m[0] + ': ' + glossary[m[0]]);
+        span.textContent = m[0];
+        fragment.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIdx)));
+      }
+      textNode.parentNode.replaceChild(fragment, textNode);
+    });
+  }
+
+  // Run after DOM is ready (script is at end of body, so DOM is parsed)
+  wrapGlossaryTerms();
+
+  // ============ QUIZ ============
+  const QUIZ_QUESTIONS = [
+    {
+      q: 'Você está atualmente matriculado em um curso de graduação?',
+      opts: [
+        { label: 'Sim, estou matriculado', score: 2 },
+        { label: 'Vou ingressar no próximo período', score: 1, note: 'A inscrição em edital exige matrícula formal já no momento da seleção.' },
+        { label: 'Não estou matriculado', score: 0, blocker: 'Estar regularmente matriculado em curso de graduação é requisito formal (Art. 17, I da Portaria 976/2010).' }
+      ]
+    },
+    {
+      q: 'Você atualmente recebe alguma outra bolsa (IC, monitoria, extensão, ProUni, FIES, PIBID etc.)?',
+      opts: [
+        { label: 'Não recebo nenhuma outra bolsa', score: 2 },
+        { label: 'Recebo, mas posso encerrar antes do PET começar', score: 1, note: 'Confirme com a outra bolsa se há prazo mínimo ou compromisso pendente antes de encerrar.' },
+        { label: 'Recebo e quero manter a outra bolsa', score: 0, blocker: 'O bolsista PET não pode acumular qualquer outro tipo de bolsa (Art. 17, II da Portaria 976/2010).' }
+      ]
+    },
+    {
+      q: 'Como está seu rendimento acadêmico no curso atualmente?',
+      opts: [
+        { label: 'Acima da média da turma, consistentemente', score: 2 },
+        { label: 'Na média do curso, sem reprovações', score: 1 },
+        { label: 'Tenho dificuldades ou reprovações recentes', score: 0, note: 'Bom rendimento acadêmico é exigido pela IES. Vale priorizar a estabilidade no curso antes do PET.' }
+      ]
+    },
+    {
+      q: 'Você tem disponibilidade real de 20 horas semanais para o programa?',
+      opts: [
+        { label: 'Sim, com folga na semana', score: 2 },
+        { label: 'Sim, mas vou ter que organizar bem o tempo', score: 1, note: 'O PET costuma exigir disciplina de agenda — reuniões fixas, prazos de pesquisa e atividades de extensão.' },
+        { label: 'Não consigo essa carga horária hoje', score: 0, blocker: 'A disponibilidade de 20h semanais é requisito formal (Art. 17, IV da Portaria 976/2010).' }
+      ]
+    },
+    {
+      q: 'Você se vê publicando ou apresentando um trabalho acadêmico por ano (em evento ou periódico)?',
+      opts: [
+        { label: 'Sim, é exatamente o tipo de experiência que quero', score: 2 },
+        { label: 'Sim, com apoio do tutor e do grupo', score: 2 },
+        { label: 'Tenho receio, mas posso tentar', score: 1, note: 'O grupo PET costuma ser ambiente formativo — você não publica sozinho, mas precisa topar entrar nesse ritmo.' },
+        { label: 'Prefiro não me comprometer com isso', score: 0, note: 'Publicar/apresentar pelo menos um trabalho por ano é dever formal do bolsista (Art. 18, VI).' }
+      ]
+    },
+    {
+      q: 'Como você se sente sobre atuar nos três pilares — ensino, pesquisa e extensão — de forma articulada?',
+      opts: [
+        { label: 'Quero exatamente isso, os três conectados', score: 2 },
+        { label: 'Tenho preferência por um deles, mas topo os outros', score: 1 },
+        { label: 'Quero focar em um pilar só (só pesquisa, ou só extensão)', score: 0, note: 'A indissociabilidade dos três pilares é central no PET. Quem quer só pesquisa pode considerar IC; só extensão, programas próprios de extensão.' }
+      ]
+    },
+    {
+      q: 'Como você se vê em atividades coletivas, em grupo, com discussões frequentes?',
+      opts: [
+        { label: 'Trabalho bem em equipe, gosto de discussão', score: 2 },
+        { label: 'Funciono melhor sozinho, mas me adapto a grupos', score: 1 },
+        { label: 'Prefiro fortemente trabalhar de forma individual', score: 0, note: 'O método tutorial é coletivo por natureza — reuniões semanais, atividades em conjunto, decisões compartilhadas.' }
+      ]
+    }
+  ];
+
+  const quizState = { idx: 0, score: 0, blockers: [], notes: [] };
+
+  function showScreen(name) {
+    document.querySelectorAll('#quizApp .quiz-screen').forEach(s => {
+      s.classList.toggle('active', s.dataset.screen === name);
+    });
+  }
+
+  function renderQuestion() {
+    const q = QUIZ_QUESTIONS[quizState.idx];
+    const total = QUIZ_QUESTIONS.length;
+    document.getElementById('qProgressText').textContent = `Pergunta ${quizState.idx + 1} de ${total}`;
+    document.getElementById('qProgressFill').style.width = `${((quizState.idx) / total) * 100}%`;
+    document.getElementById('qText').textContent = q.q;
+    const opts = document.getElementById('qOptions');
+    opts.innerHTML = '';
+    q.opts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-opt';
+      btn.textContent = opt.label;
+      btn.addEventListener('click', () => answerQuestion(opt));
+      opts.appendChild(btn);
+    });
+    showScreen('question');
+  }
+
+  function answerQuestion(opt) {
+    quizState.score += opt.score;
+    if (opt.blocker) quizState.blockers.push(opt.blocker);
+    if (opt.note) quizState.notes.push(opt.note);
+    quizState.idx++;
+    if (quizState.idx >= QUIZ_QUESTIONS.length) {
+      renderResult();
+    } else {
+      renderQuestion();
+    }
+  }
+
+  function renderResult() {
+    document.getElementById('qProgressFill').style.width = '100%';
+    const badge = document.getElementById('qBadge');
+    const titleEl = document.getElementById('qResultTitle');
+    const summaryEl = document.getElementById('qResultSummary');
+    const feedbackBox = document.getElementById('qFeedback');
+    const feedbackList = document.getElementById('qFeedbackList');
+
+    let tier, badgeText, title, summary;
+    if (quizState.blockers.length > 0) {
+      tier = 'tier-blocker';
+      badgeText = 'Requisito formal não atendido';
+      title = 'Há um impedimento formal a resolver';
+      summary = 'Identificamos pelo menos um requisito legal do PET que não está atendido na sua situação atual. Esses requisitos são definidos por portaria do MEC e não podem ser flexibilizados pela IES — vale resolver o ponto antes de se inscrever.';
+    } else if (quizState.score >= 12) {
+      tier = 'tier-great';
+      badgeText = 'Excelente encaixe';
+      title = 'Seu perfil tem encaixe forte com o PET';
+      summary = 'Pelas suas respostas, você cumpre os requisitos formais e tem o tipo de disposição que o método tutorial exige: trabalho coletivo, indissociabilidade dos três pilares, e disposição para a vida acadêmica ativa. Acompanhe o próximo edital e considere conversar com tutores em atividade.';
+    } else if (quizState.score >= 8) {
+      tier = 'tier-good';
+      badgeText = 'Bom potencial';
+      title = 'Você tem bom potencial, com pontos a refinar';
+      summary = 'Os requisitos formais parecem em ordem, mas algumas respostas indicam pontos onde vale uma reflexão honesta — geralmente questões de disponibilidade, hábito acadêmico ou preferência por trabalho individual. Esses pontos podem ser desenvolvidos, mas o tutor vai notar.';
+    } else {
+      tier = 'tier-reflect';
+      badgeText = 'Vale uma reflexão';
+      title = 'Talvez não seja o melhor momento';
+      summary = 'Pelas respostas, há vários pontos onde seu perfil ou momento atual não conversa bem com o PET. Isso não é descartar a possibilidade — é só sugerir que vale considerar outras modalidades de bolsa (IC, extensão, monitoria) que podem ter encaixe mais imediato, ou retomar o PET quando alguns desses pontos estiverem mais resolvidos.';
+    }
+
+    badge.className = 'quiz-result-badge ' + tier;
+    badge.textContent = badgeText;
+    titleEl.textContent = title;
+    summaryEl.textContent = summary;
+
+    const allFeedback = [...quizState.blockers, ...quizState.notes];
+    if (allFeedback.length > 0) {
+      feedbackList.innerHTML = '';
+      allFeedback.forEach(f => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        feedbackList.appendChild(li);
+      });
+      feedbackBox.hidden = false;
+    } else {
+      feedbackBox.hidden = true;
+    }
+
+    showScreen('result');
+  }
+
+  function resetQuiz() {
+    quizState.idx = 0;
+    quizState.score = 0;
+    quizState.blockers = [];
+    quizState.notes = [];
+    document.getElementById('qProgressFill').style.width = '0%';
+    showScreen('intro');
+  }
+
+  document.getElementById('quizStart').addEventListener('click', renderQuestion);
+  document.getElementById('quizRestart').addEventListener('click', resetQuiz);
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', '#' + id);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
